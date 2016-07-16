@@ -1,55 +1,88 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['firebase'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  // Form data for the login modal
-  $scope.loginData = {};
-
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
+.config(function() {
+  var config = {
+    apiKey: "AIzaSyD51WixY6J79IzqsnQOtV1D8VhZeMV7WtA",
+    authDomain: "grabr-3124f.firebaseapp.com",
+    databaseURL: "https://grabr-3124f.firebaseio.com",
+    storageBucket: "grabr-3124f.appspot.com",
   };
+  firebase.initializeApp(config);
+})
 
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
+.factory("Auth", ["$firebaseAuth",
+  function($firebaseAuth) {
+    return $firebaseAuth();
+  }
+])
 
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
+.controller('SignUpCtrl', function($scope, Auth){
+   var Acc = firebase.database().ref('/users');
+  $scope.createUser = function(Data) {
+      $scope.message = null;
+      $scope.error = null;
 
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
+      // Create a new user
+      Auth.$createUserWithEmailAndPassword(Data.email, Data.password)
+      .then(function(firebaseUser) {
+        // var fb = firebaseUser;
+          $scope.message = "User created with uid: " + firebaseUser.uid;
+          // var prf = Acc.ref('/').child(firebaseUser.uid);
+          var prf = Acc.child(firebaseUser.uid);
+          //var list = prf.push('Profile');
+
+          prf.set({
+            fname: Data.fname,
+            lname: Data.lname,
+            idnum: Data.username,
+
+          });
+          console.log($scope.message);
+      }).catch(function(error) {
+          $scope.error = error;
+          console.log($scope.error);
+      });
+
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+.controller('AppCtrl', function($scope,$firebaseAuth, $firebaseObject) {
+  $scope.authObj = $firebaseAuth();
+
+    //Get the user
+    var firebaseUser = $scope.authObj.$getAuth();
+    console.log(firebaseUser.uid);
+  var ref = firebase.database().ref('/users/' + firebaseUser.uid);
+  $scope.stuff = $firebaseObject(ref);
+})
+
+.controller('LoginCtrl', function($scope, $state, $firebaseAuth) {
+  $scope.doLogin = function(Data) {
+
+    var email = Data.email, password = Data.password;
+
+    var auth = $firebaseAuth();
+
+    $scope.signIn = function() {
+      $scope.firebaseUser = null;
+      $scope.error = null;
+
+      auth.signInWithEmailAndPassword(email, password).then(function(firebaseUser) {
+        $scope.firebaseUser = firebaseUser;
+      }).catch(function(error) {
+        $scope.error = error;
+      });
+    };
+
+    // firebase.auth().signInWithEmailAndPassword(email, password)
+    // .then(function(authData) {
+    //   console.log('Logged in as ');
+    //   $state.go('app.home');
+    // }).catch(function(error) {
+    //         $scope.error = error;
+    //         console.log(error);
+    // });
+  };
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {

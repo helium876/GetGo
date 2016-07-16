@@ -1,0 +1,17 @@
+<ion-view>
+  <ion-content>
+  	<div class="container center-align">
+  		<div class="card-panel">
+  			<form class="col s12" ng-model="Login">
+		        <div class="input-field col s12">
+		          <input placeholder="Email" type="email" ng-model="Login.email">
+		        </div>
+		        <div class="input-field col s12">
+		          <input placeholder="Password" type="password" ng-model="Login.password">
+		        </div>
+		        <a class="waves-effect waves-teal btn" ng-click="doLogin(Login);">Sign Up</a>
+  			</form>
+  		</div>
+  	</div>
+  </ion-content>
+</ion-view>

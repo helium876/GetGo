@@ -1,1 +1,105 @@
-/* Empty. Add your own CSS if you like */
+body {
+  /*cursor: url("http://ionicframework.com/img/finger.png"), auto;*/
+}
+
+.item {
+  font-size: 14px !important;
+}
+
+.company-logo {
+  vertical-align: middle;
+  max-width: 60%;
+  content: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/256302/ionic-logo-white.png");
+}
+
+.bar-balanced {
+  background-color: #1aa1e1 !important;
+  border-color: #1791ca !important;
+}
+
+.platform-android {
+  /* Override the Ionic icons with Android specific ones */
+}
+.platform-android .menu {
+  background-color: #555555 !important;
+}
+.platform-android .menu a:not(.item-divider):hover, .platform-android .menu a:not(.item-divider):active {
+  background-color: #464646;
+  background-image: linear-gradient(left, #1aa1e1, #1aa1e1 7px, transparent 7px, transparent 100%) !important;
+  background-image: -webkit-linear-gradient(left, #1aa1e1, #1aa1e1 7px, transparent 7px, transparent 100%) !important;
+}
+.platform-android .menu .active {
+  background-color: #464646 !important;
+  background-image: linear-gradient(left, #1aa1e1, #1aa1e1 7px, transparent 7px, transparent 100%) !important;
+  background-image: -webkit-linear-gradient(left, #1aa1e1, #1aa1e1 7px, transparent 7px, transparent 100%) !important;
+}
+.platform-android .menu .item, .platform-android .menu .bar-header {
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.platform-android .menu .item i:before, .platform-android .menu .bar-header i:before {
+  font-size: 22px;
+}
+.platform-android .menu .bar-header {
+  background-color: #1aa1e1;
+}
+.platform-android .ion-home:before {
+  content: "\f38f";
+}
+.platform-android .ion-compose:before {
+  content: "\f373";
+}
+.platform-android .ion-person:before {
+  content: "\f2d9";
+}
+
+
+
+
+
+/*#1aa1e1*/
+
+
+/* label color */
+   .input-field label {
+     color: #1aa1e1;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #1aa1e1;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #1aa1e1;
+     box-shadow: 0 1px 0 0 #1aa1e1;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #1aa1e1;
+     box-shadow: 0 1px 0 0 #1aa1e1;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #1aa1e1;
+     box-shadow: 0 1px 0 0 #1aa1e1;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #1aa1e1;
+   }
+
+
+   .btn{
+    background-color: #1aa1e1;
+   }
+
+   .btn:hover,
+   .btn:active,
+   .btn:focus{
+    background-color: #fff;
+    color: #1aa1e1;
+    border: #1aa1e1 solid 1px;
+   }

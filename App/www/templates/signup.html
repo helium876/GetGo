@@ -1,0 +1,26 @@
+<ion-view>
+  <ion-content>
+  	<div class="container center-align">
+  		<div class="card-panel">
+  			<form class="col s12" ng-model="Signup">
+  				<div class="input-field col s12">
+		          <input placeholder="First Name" type="text" ng-model="Signup.fname">
+		        </div>
+		        <div class="input-field col s12">
+		          <input placeholder="Last Name" type="text" ng-model="Signup.lname">
+		        </div>
+		        <div class="input-field col s12">
+		          <input placeholder="ID Number" type="text" ng-model="Signup.username">
+		        </div>
+		        <div class="input-field col s12">
+		          <input placeholder="Email" type="email" ng-model="Signup.email">
+		        </div>
+		        <div class="input-field col s12">
+		          <input placeholder="Password" type="password" ng-model="Signup.password">
+		        </div>
+		        <a class="waves-effect waves-teal btn" ng-click="createUser(Signup);">Sign Up</a>
+  			</form>
+  		</div>
+  	</div>
+  </ion-content>
+</ion-view>
