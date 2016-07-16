@@ -52,37 +52,28 @@ angular.module('starter.controllers', ['firebase'])
     //Get the user
     var firebaseUser = $scope.authObj.$getAuth();
     console.log(firebaseUser.uid);
-  var ref = firebase.database().ref('/users/' + firebaseUser.uid);
-  $scope.stuff = $firebaseObject(ref);
+    var ref = firebase.database().ref('/users/' + firebaseUser.uid);
+    $scope.stuff = $firebaseObject(ref);
+    console.log($scope.stuff);
+    $scope.img = 'https://utechisas.utech.edu.jm/sipr//images/photos/';
 })
 
 .controller('LoginCtrl', function($scope, $state, $firebaseAuth) {
-  $scope.doLogin = function(Data) {
-
-    var email = Data.email, password = Data.password;
 
     var auth = $firebaseAuth();
 
-    $scope.signIn = function() {
-      $scope.firebaseUser = null;
-      $scope.error = null;
-
-      auth.signInWithEmailAndPassword(email, password).then(function(firebaseUser) {
-        $scope.firebaseUser = firebaseUser;
+    $scope.signIn = function(Data) {
+      var email = Data.email, password = Data.password;
+       
+      firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(function(authData) {
+        console.log('Logged in as ');
+        $state.go('app.home');
       }).catch(function(error) {
-        $scope.error = error;
+              $scope.error = error;
+              console.log(error);
       });
-    };
-
-    // firebase.auth().signInWithEmailAndPassword(email, password)
-    // .then(function(authData) {
-    //   console.log('Logged in as ');
-    //   $state.go('app.home');
-    // }).catch(function(error) {
-    //         $scope.error = error;
-    //         console.log(error);
-    // });
-  };
+    }
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
