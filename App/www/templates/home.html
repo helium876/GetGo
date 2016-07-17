@@ -1,28 +1,38 @@
-<ion-view view-title="Home">
+<ion-view view-title="Home" ng-init="loading()">
   <ion-content>
-    <ion-list>
-      <!-- <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
-        {{playlist.title}}
-      </ion-item> -->
-      <!-- <img ng-src="{{ stuff.idnum }}"> -->
-      <!-- <h1>{{ stuff.fname }}</h1> -->
-
-       <div class="col s12 m8 offset-m2 l6 offset-l3">
-        <div class="card-panel grey lighten-5 z-depth-1">
+      <div ng-repeat="(key, value) in stuff" class="col s12 m8 offset-m2 l6 offset-l3">
+        <div class="card post grey lighten-5 z-depth-1">
           <div class="row valign-wrapper">
-            <div class="col-20">
-              <img ng-src="{{img}}{{stuff.idnum}}.jpg" alt="" class="circle"> 
+          <div></div>
+            <div class="col-20 center-align">
+              <img style="height: 50px;" src="img/gra.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
             </div>
             <div class="col-80">
               <span class="black-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua.
+                {{value.title}}
               </span>
             </div>
           </div>
+          <div class="row">
+            <div  class="col-100 center-align">
+              <p>{{ value.details }}</p>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 2px;">
+          	<div class="col-25 center-align">
+          		<p class="pricce">${{value.price}}</p>
+          	</div>
+          	<div class="col-40 left-align">
+          		<p>{{ value.name }}</p>
+          	</div>
+          	<div class="col-35 left-align">
+          		<a ng-click="runit()" class="waves-effect waves-light btn">Run Errand</a>
+          	</div>
+          </div>
         </div>
       </div>
+<!-- </ion-item> -->
 
-    </ion-list>
+    <!-- </ion-list> -->
   </ion-content>
 </ion-view>

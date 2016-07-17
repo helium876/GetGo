@@ -1,21 +1,30 @@
 <ion-view view-title="Post Errands">
   <ion-content>
    <div class="container center-align">
+   	<h5 class="title_">Lets get that Errand out the way</h5>
   		<div class="card-panel">
   			<form class="col s12" ng-model="post">
   				<div class="input-field col s12">
-		          <input type="text" ng-model="post.title">
-		          <label class="active" for="first_name2">Errand Title</label>
+		          <input type="text" ng-model="post.title" id="whattodo">
+		          <label class="" for="whattodo">What do you want us to do?</label>
+		        </div>
+		        <div class="input-field col s12">
+		          <input type="text" ng-model="post.fname" id="first_name1">
+		          <label class="" for="first_name1">What Should we call you?</label>
+		        </div>
+		        <div class="input-field col s12">
+		          <input type="text" ng-model="post.num" id="num">
+		          <label class="" for="num">What number can we call you at?</label>
 		        </div>
 		        <div class="input-field col s12">
 		          <textarea id="textarea1" class="materialize-textarea" ng-model="post.details"></textarea>
-		          <label for="textarea1">Errand Details</label>
+		          <label for="textarea1">Details of this Errand</label>
 		        </div>
 		        <div class="input-field col s12">
-		          <input type="number" ng-model="post.price">
-		          <label class="active" for="first_name2">Price(JMD)</label>
+		          <input value="100" type="number" ng-model="post.price" id="price">
+		          <label class="" for="price">Price(JMD)</label>
 		        </div>
-		        <a class="waves-effect waves-teal btn" ng-click="">Post Errand</a>
+		        <a class="waves-effect waves-teal btn" ng-click="postJob(post)">Post Errand</a>
   			</form>
   		</div>
   	</div>

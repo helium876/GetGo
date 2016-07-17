@@ -17,7 +17,7 @@ angular.module('starter.controllers', ['firebase'])
 ])
 
 .controller('SignUpCtrl', function($scope, Auth){
-   var Acc = firebase.database().ref('/users');
+
   $scope.createUser = function(Data) {
       $scope.message = null;
       $scope.error = null;
@@ -46,20 +46,106 @@ angular.module('starter.controllers', ['firebase'])
   };
 })
 
-.controller('AppCtrl', function($scope,$firebaseAuth, $firebaseObject) {
+.controller('AppCtrl', function($scope,$ionicPopup,$rootScope,$timeout,$ionicLoading,$firebaseAuth,$ionicHistory, $firebaseObject) {
   $scope.authObj = $firebaseAuth();
+  $ionicHistory.nextViewOptions({
+    disableBack: true
+  });
+
+  $scope.runit = function() {
+   var alertPopup = $ionicPopup.alert({
+     title: 'Lets get that Errand Outta the way!',
+     template: 'Be sure to give your client a call'
+   });
+ };
+
+ $scope.addcard = function () {
+    $ionicLoading.show({
+          template: '<ion-spinner></ion-spinner>',
+          animation: 'fade-in',
+          noBackdrop: true,
+          maxWidth: 500,
+          showDelay: 800
+        });
+        console.log("Loading");
+         angular.element(document).ready(function () {
+          $timeout(function() {
+            $ionicLoading.hide();
+           }, 3000);
+            console.log("Loaded");
+        });
+
+         var alertPopup = $ionicPopup.alert({
+     title: 'Card Added Successfully!'
+     //template: 'Be sure to give your client a call'
+   });
+ };
+
+
+ $scope.JobDone = function(){
+  var alertPopup = $ionicPopup.alert({
+     title: 'Congrats! Your Errand is Complete',
+     template: 'Your Account will be charged'
+   });
+ }
+
+ $scope.Query = function(){
+  var alertPopup = $ionicPopup.show({
+     title: 'Please Submit Your Query',
+     buttons: [
+      { text: 'Cancel' },
+      {
+        text: '<b>Submit</b>',
+        type: 'button-positive',
+      }
+      ],
+     template: '<input type="text">'
+   });
+ }
+
 
     //Get the user
-    var firebaseUser = $scope.authObj.$getAuth();
-    console.log(firebaseUser.uid);
-    var ref = firebase.database().ref('/users/' + firebaseUser.uid);
+    // var firebaseUser = $scope.authObj.$getAuth();
+    // console.log(firebaseUser.uid);
+    // var ref = firebase.database().ref('/users/' + firebaseUser.uid);
+    // $scope.stuff1 = $firebaseObject(ref);
+    // console.log($scope.stuff1);
+    // $scope.img = 'https://utechisas.utech.edu.jm/sipr//images/photos/';
+    $scope.loading = function() {
+        $ionicLoading.show({
+          template: '<ion-spinner></ion-spinner>',
+          animation: 'fade-in',
+          noBackdrop: true,
+          maxWidth: 500,
+          showDelay: 800
+        });
+        console.log("Loading");
+         angular.element(document).ready(function () {
+          $timeout(function() {
+            $ionicLoading.hide();
+           }, 5000);
+            console.log("Loaded");
+        });
+     }
+
+     $scope.hide = function(){
+        $ionicLoading.hide();
+    };
+    var ref = firebase.database().ref('posts/');
     $scope.stuff = $firebaseObject(ref);
     console.log($scope.stuff);
-    $scope.img = 'https://utechisas.utech.edu.jm/sipr//images/photos/';
 })
 
-.controller('LoginCtrl', function($scope, $state, $firebaseAuth) {
-
+.controller('LoginCtrl', function($scope, $state, $firebaseAuth,$ionicHistory) {
+  $scope.authObj = $firebaseAuth();
+    $ionicHistory.nextViewOptions({
+    disableBack: true
+  });
+   var firebaseUser = $scope.authObj.$getAuth();
+   console.log(firebaseUser);
+   if (firebaseUser) {
+    $state.go('app.home');
+   }
     var auth = $firebaseAuth();
 
     $scope.signIn = function(Data) {
@@ -68,6 +154,9 @@ angular.module('starter.controllers', ['firebase'])
       firebase.auth().signInWithEmailAndPassword(email, password)
       .then(function(authData) {
         console.log('Logged in as ');
+        $ionicHistory.nextViewOptions({
+    disableBack: true
+  });
         $state.go('app.home');
       }).catch(function(error) {
               $scope.error = error;
@@ -76,5 +165,36 @@ angular.module('starter.controllers', ['firebase'])
     }
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('PostCtrl', function($scope,$ionicPopup, $stateParams,$ionicHistory,$firebaseAuth, $firebaseObject) {
+  $scope.authObj = $firebaseAuth();
+    $ionicHistory.nextViewOptions({
+    disableBack: true
+  });
+    $scope.thanks = function() {
+   var alertPopup = $ionicPopup.alert({
+     title: 'Post Submitted ',
+     template: 'Lets get those Errands outta the way'
+   });
+ };
+
+    //Get the user
+    var firebaseUser = $scope.authObj.$getAuth();
+    // console.log(firebaseUser.uid);
+    var ref = firebase.database().ref('posts/')
+    var list = ref.push();
+    ;
+  
+  
+  $scope.postJob = function(Data){
+    list.set({
+      title: Data.title,
+      name: Data.fname,
+      details: Data.details,
+      price: Data.price,
+      userId: firebaseUser.uid
+    });
+    $scope.thanks();
+  }
 });
+
+

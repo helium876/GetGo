@@ -11,9 +11,9 @@
               </button>
             </ion-nav-buttons>
             
-            <ion-nav-buttons side="right">
+            <!-- <ion-nav-buttons side="right">
               <button ng-click="goHome()" class="button button-icon button-clear ion-home"></button>
-            </ion-nav-buttons>            
+            </ion-nav-buttons>   -->          
           </ion-nav-bar>
 
           <ion-nav-view name="menuContent"></ion-nav-view>
@@ -23,7 +23,7 @@
           <ion-content>
             <ul class="list">
               <span class="item item-header margin-top-15">
-                <h1 class="title"><img class="company-logo"/></h1>
+                <h1 class="menu_ title_">GetGo</h1>
               </span>
               <a ui-sref="app.home"
                  ui-sref-active="active"
@@ -32,37 +32,51 @@
                 <i class="icon ion-home"></i>
                 Home
               </a>   
-              <a ui-sref="eventmenu.checkin"
-                 ui-sref-active="active"
-                 class="item item-icon-left"                
-                 menu-close>
-                <i class="icon ion-compose"></i>
-                Jobs
-              </a>
               <a ui-sref="app.signup"
                  ui-sref-active="active"
                  class="item item-icon-left"                
                  menu-close>
-                <i class="icon ion-compose"></i>
-                Signup
+                <i class="icon ion-android-drafts"></i>
+                Sign-up
               </a>
               <a ui-sref="app.signin"
                  ui-sref-active="active"
                  class="item item-icon-left"                
                  menu-close>
                 <i class="icon ion-compose"></i>
-                Signin
+                Sign-in
               </a>
-              <a ui-sref="eventmenu.attendees"
+              <a ui-sref="app.post"
+                 ui-sref-active="active"
+                 class="item item-icon-left"                
+                 menu-close>
+                <i class="icon ion-android-bicycle"></i>
+                Post Errand
+              </a>
+              <a ui-sref="app.job"
                  ui-sref-active="active"
                  class="item item-icon-left"                  
                  menu-close>
                 <i class="icon ion-person"></i>
-                Profile
+                Jobs
               </a>
-              <a class="item item-icon-left" ng-click="auth.$signOut()"                  
+              <a ui-sref="app.confirm"
+                 ui-sref-active="active"
+                 class="item item-icon-left"                  
                  menu-close>
                 <i class="icon ion-person"></i>
+                Confirm
+              </a>
+              <a ui-sref="app.acc"
+                 ui-sref-active="active"
+                 class="item item-icon-left"                  
+                 menu-close>
+                <i class="icon ion-person"></i>
+                Account
+              </a>
+              <a ui-sref="app.signin" class="item item-icon-left" ng-click="auth.$signOut()"                  
+                 menu-close>
+                <i class="icon ion-alert"></i>
                 Logout
               </a>
             </ul>

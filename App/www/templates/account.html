@@ -1,0 +1,21 @@
+<ion-view view-title="Add Card">
+  <ion-content>
+  	<div class="container center-align">
+  		<div class="card-panel">
+  		<h4 class="title_">Add Card Info</h4>
+  			<form class="col s12" ng-model="Signup">
+  				<div class="input-field col s12">
+		          <input placeholder="Card Number" type="text" ng-model="Signup.fname">
+		        </div>
+		        <div class="input-field col s12">
+		          <input placeholder="Exp Date" type="text" ng-model="Signup.lname">
+		        </div>
+		        <div class="input-field col s12">
+		          <input placeholder="CSV" type="text" ng-model="Signup.username">
+		        </div>
+		        <a class="waves-effect waves-teal btn" ng-click="addcard();">Add</a>
+  			</form>
+  		</div>
+  	</div>
+  </ion-content>
+</ion-view>

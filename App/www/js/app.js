@@ -26,11 +26,21 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     //controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.page', {
+    url: '/page',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/page.html',
+        controller: 'AppCtrl'
+      }
+    }
+  })
+
+  .state('app.index', {
+    url: '/index',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/index.html'
       }
     }
   })
@@ -54,6 +64,46 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
+    .state('app.post', {
+      url: '/post',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/post.html',
+          controller: 'PostCtrl'
+        }
+      }
+    })
+
+    .state('app.job', {
+      url: '/job',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/job.html',
+          controller: 'AppCtrl'
+        }
+      }
+    })
+
+    .state('app.confirm', {
+      url: '/confirm',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/confirm.html',
+          controller: 'AppCtrl'
+        }
+      }
+    })
+
+    .state('app.acc', {
+      url: '/acc',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/account.html',
+          controller: 'AppCtrl'
+        }
+      }
+    })
+
   .state('app.signin', {
     url: '/signin',
     views: {
@@ -64,5 +114,5 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/signup');
+  $urlRouterProvider.otherwise('/app/index');
 });

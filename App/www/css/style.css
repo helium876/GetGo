@@ -2,6 +2,41 @@ body {
   /*cursor: url("http://ionicframework.com/img/finger.png"), auto;*/
 }
 
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/roboto/Roboto-Regular.woff);
+}
+
+
+@font-face {
+    font-family: Robotothin;
+    src: url(../fonts/roboto/Roboto-Thin.woff);
+}
+.post{
+  padding-top: 15px;
+}
+
+.post span{
+  /*font-weight: 600;*/
+  font-size: 18px;
+  text-transform: uppercase;
+  text-align: justify;
+}
+
+.post p{
+  color: #787676;
+  font-size: 20px;
+  margin-top: 7px;
+}
+
+.post .btn{
+  color: #;
+}
+
+*{
+  font-family: Roboto;
+}
+
 .item {
   font-size: 14px !important;
 }
@@ -9,7 +44,7 @@ body {
 .company-logo {
   vertical-align: middle;
   max-width: 60%;
-  content: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/256302/ionic-logo-white.png");
+  content: url("../img/ionic-logo-white.png");
 }
 
 .bar-balanced {
@@ -68,21 +103,29 @@ body {
      color: #1aa1e1;
    }
    /* label focus color */
-   .input-field input[type=text]:focus + label {
+   .input-field input[type=text]:focus + label,
+   .input-field input[type=number]:focus + label,
+    {
      color: #1aa1e1;
    }
    /* label underline focus color */
-   .input-field input[type=text]:focus {
+   .input-field input[type=text]:focus,
+
+    {
      border-bottom: 1px solid #1aa1e1;
      box-shadow: 0 1px 0 0 #1aa1e1;
    }
    /* valid color */
-   .input-field input[type=text].valid {
+   .input-field input[type=text].valid,
+
+    {
      border-bottom: 1px solid #1aa1e1;
      box-shadow: 0 1px 0 0 #1aa1e1;
    }
    /* invalid color */
-   .input-field input[type=text].invalid {
+   .input-field input[type=text].invalid,
+
+    {
      border-bottom: 1px solid #1aa1e1;
      box-shadow: 0 1px 0 0 #1aa1e1;
    }
@@ -102,4 +145,51 @@ body {
     background-color: #fff;
     color: #1aa1e1;
     border: #1aa1e1 solid 1px;
+   }
+
+
+   .title_{
+    font-weight: 100;
+    text-transform: uppercase;
+    font-family: RobotoThin;
+   }
+
+   .menu_.title_{
+    color: #fff;
+    font-weight: 100;
+    text-align: center;
+    text-transform: initial;
+   }
+
+   .index_{
+    background-color: #1aa1e1;
+    height: 100vh;
+   }
+
+   .index_ .title_{
+    padding-top: 150px;
+    color: #fff;
+    font-size: 90px;
+    text-transform: initial;
+   }
+
+
+   .index_links a{
+    color: #fff;
+    display: block;
+    font-size: 20px;
+    font-family: RobotoThin; 
+    padding: 5px;
+    font-weight: 600;
+   }
+
+   .index_links p{
+    color: #fff;
+    padding-top: 5px;
+    font-family: RobotoThin;
+    font-weight: 600;
+   }
+
+   p.pricce{
+    color: #FF8300;
    }

@@ -1,6 +1,7 @@
 <ion-view>
   <ion-content>
   	<div class="container center-align">
+    <h4 class="title_">Sign-in Now!</h4>
   		<div class="card-panel">
   			<form class="col s12" ng-model="Login">
 		        <div class="input-field col s12">
@@ -9,7 +10,7 @@
 		        <div class="input-field col s12">
 		          <input placeholder="Password" type="password" ng-model="Login.password">
 		        </div>
-		        <a class="waves-effect waves-teal btn" ng-click="signIn(Login);">Sign Up</a>
+		        <a class="waves-effect waves-teal btn" ng-click="signIn(Login); loading();" menu-close>Sign In</a>
   			</form>
   		</div>
   	</div>

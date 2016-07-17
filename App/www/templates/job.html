@@ -1,0 +1,34 @@
+<ion-view view-title="Jobs">
+  <ion-content>
+    <div ng-repeat="(key, value) in stuff" class="col s12 m8 offset-m2 l6 offset-l3">
+        <div class="card post grey lighten-5 z-depth-1">
+          <div class="row valign-wrapper">
+          <div></div>
+            <div class="col-20 center-align">
+              <img style="height: 50px;" src="img/gra.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+            </div>
+            <div class="col-80">
+              <span class="black-text">
+                {{value.title}}
+              </span>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 2px;">
+          	<div class="col-65">
+  
+	  <div class="item item-button-right">
+	    Call {{value.name}}
+	    <button class="button button-positive">
+	      <i class="icon ion-ios-telephone"></i>
+	    </button>
+	  </div>
+</div>
+  <div class="col-35 right-align" style="margin-top: 5px;">
+          		<a ng-click="doneit()" class="waves-effect waves-light btn">Done</a>
+          	</div>
+</div>
+          </div>
+        </div>
+      </div>
+  </ion-content>
+</ion-view>
